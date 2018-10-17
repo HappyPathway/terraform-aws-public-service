@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "cpualarm" {
-  alarm_name          = "${var.service_name}-${var.service_version}-${var.env}-cpu_up"
+  alarm_name          = "${var.service_name}-${var.env}-cpu_up"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "${var.cloudwatch_evaluation_periods}"
   metric_name         = "CPUUtilization"
@@ -17,7 +17,7 @@ resource "aws_cloudwatch_metric_alarm" "cpualarm" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cpualarm-down" {
-  alarm_name          = "${var.service_name}-${var.service_version}-${var.env}-cpu_down"
+  alarm_name          = "${var.service_name}}-${var.env}-cpu_down"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "${var.cloudwatch_evaluation_periods}"
   metric_name         = "CPUUtilization"

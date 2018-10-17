@@ -1,5 +1,5 @@
 resource "aws_security_group" "service" {
-  name   = "${var.service_name}-${var.service_version}-${var.env}-nodes"
+  name   = "${var.service_name}-${var.env}-nodes"
   vpc_id = "${var.vpc_id}"
 
   ingress {
@@ -31,7 +31,7 @@ resource "aws_security_group" "service" {
 
 resource "aws_security_group" "elb" {
   vpc_id = "${var.vpc_id}"
-  name   = "${var.service_name}-${var.service_version}-${var.env}-elb"
+  name   = "${var.service_name}-${var.env}-elb"
 
   ingress {
     from_port   = "${var.service_port}"

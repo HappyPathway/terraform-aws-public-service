@@ -9,11 +9,11 @@ resource "aws_autoscaling_group" "scalegroup" {
   health_check_type    = "ELB"
   default_cooldown     = "${var.default_cooldown}"
 
-  name = "${var.service_name}-${var.service_version}-${var.env}"
+  name = "${var.service_name}-${var.env}"
 
   tag {
     key                 = "Name"
-    value               = "${var.service_name}-${var.service_version}-${var.env}"
+    value               = "${var.service_name}-${var.env}"
     propagate_at_launch = true
   }
 

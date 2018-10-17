@@ -1,5 +1,5 @@
 resource "aws_elb" "service" {
-  name            = "${var.service_name}-${join("-", split(".", var.service_version))}-${var.env}"
+  name            = "${var.service_name}-${var.env}"
   subnets         = ["${var.public_subnet_id}"]
   security_groups = ["${aws_security_group.elb.id}"]
   internal        = false
@@ -33,12 +33,12 @@ resource "aws_elb" "service" {
   connection_draining         = "${var.connection_draining}"
   connection_draining_timeout = "${var.connection_draining_timeout}"
   tags {
-    Name = "${var.service_name}-${var.service_version}-${var.env}"
+    Name = "${var.service_name}-${var.env}"
   }
 }
 
 resource "aws_lb_cookie_stickiness_policy" "cookie_stickiness" {
-  name                     = "${var.service_name}-${join("-", split(".", var.service_version))}-${var.env}-cookiestickness"
+  name                     = "${var.service_name}-${var.env}-cookiestickness"
   load_balancer            = "${aws_elb.service.id}"
   lb_port                  = "${var.service_port}"
   cookie_expiration_period = 600
